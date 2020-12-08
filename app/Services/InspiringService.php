@@ -8,11 +8,8 @@ namespace App\Services;
 class InspiringService
 {
     /**
-
      * @return string
-
      */
-
     public function inspire()
     {
         $quotes = [   
