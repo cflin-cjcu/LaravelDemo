@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InspiringController;
-
+use App\Models\Subject;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,9 +45,38 @@ Route::get('/edit', function(){
 
 }); 
 
-Route::get('/add', function(){
+Route::get('/add1', function(){
     $post = new App\Models\Post;
-     $post->content = 'ABCDEF';
+     $post->content = 'fffffF';
+     $post->subject_id = 1;
      $post->save();
      return $post; 
  }); 
+
+ Route::get('/add2', function(){
+    $post = new App\Models\Post;
+     $post->content = 'SSSSSSS';
+     $post->subject_id = 2;
+     $post->save();
+     return $post; 
+ });
+
+ Route::get('/sub1', function(){
+    $post = new App\Models\Subject;
+     $post->name = 'computer';
+     $post->save();
+     return $post; 
+ });
+
+ Route::get('/sub2', function(){
+    $post = new App\Models\Subject;
+     $post->name = 'network';
+     $post->save();
+     return $post; 
+ });
+
+ Route::get('/get1', function(){
+    $subject = Subject::find(1);
+    $posts = $subject->posts;
+    return $posts;
+}); 
