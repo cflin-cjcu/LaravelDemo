@@ -44,7 +44,7 @@ class PostController extends Controller
         $post = new Post;
         $post->content = $request->input('content');
         $post->subject_id = 0;
-        $post->user_id = 1;
+        $post->user_id = Auth::id();
         $post->save();
 
         return redirect(route('posts.index'));
@@ -71,6 +71,10 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         //
+        $user = Auth::user();
+        if(is_null($user) || $user->cant('update', $post)){
+        return redirect(route('posts.index'));
+        }
         return view('posts.edit', ['post' => $post]);
     }
 

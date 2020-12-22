@@ -21,17 +21,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello-world', function () {
+// Route::get('/hello-world', function () {
 
-    return view('hello_world');
+//     return view('hello_world');
 
-});
+// });
 
-Route::get('/about_us', function () {
+// Route::get('/about_us', function () {
 
-    return view('about_us',['name' => 'Laravel 範例']);
+//     return view('about_us',['name' => 'Laravel 範例']);
 
-});
+// });
 
 Route::get('/inspire', 'App\Http\Controllers\InspiringController@inspire');
 
@@ -93,3 +93,7 @@ Route::get('/add1', function(){
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('posts', 'App\Http\Controllers\PostController');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
